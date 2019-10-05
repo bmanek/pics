@@ -18,7 +18,8 @@
 .env.test.local
 .env.production.local
 
-environment.txt
+# keys
+.env
 
 npm-debug.log*
 yarn-debug.log*
