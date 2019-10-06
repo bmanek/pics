@@ -2,20 +2,20 @@ import React from 'react';
 import axios from 'axios';
 import SearchBar from './SearchBar'
 
+require('dotenv').config()
+
 const API_KEY = process.env.REACT_APP_ACCESS_KEY
 const SECRET_KEY = process.env.REACT_APP_SECRET_KEY
 
 class App extends React.Component {
 
   onSearchSubmit(term) {
-    // axios.get('https://api.unsplash.com/search/photos', {
-    //   params: {query: term},
-    //   headers: {
-    //     Authorization: `Client-ID ${process.env.REACT_APP_ACCESS_KEY}`
-    //   }
-    // })
-    console.log(term)
-    console.log("API: ", API_KEY)
+    axios.get('https://api.unsplash.com/search/photos', {
+      params: {query: term},
+      headers: {
+        Authorization: `Client-ID ${process.env.REACT_APP_ACCESS_KEY}`
+      }
+    })
   }
 
   render() {
