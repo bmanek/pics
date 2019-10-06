@@ -15,6 +15,8 @@ class App extends React.Component {
       headers: {
         Authorization: `Client-ID ${process.env.REACT_APP_ACCESS_KEY}`
       }
+    }).then( (response) => {
+      console.log(response)
     })
   }
 
