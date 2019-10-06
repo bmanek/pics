@@ -8,8 +8,9 @@ const API_KEY = process.env.REACT_APP_ACCESS_KEY
 const SECRET_KEY = process.env.REACT_APP_SECRET_KEY
 
 class App extends React.Component {
+  state = { images: [] }
 
-  async onSearchSubmit(term) {
+  onSearchSubmit = async (term) => {
     const response = await axios
       .get('https://api.unsplash.com/search/photos', {
         params: {query: term},
@@ -17,13 +18,15 @@ class App extends React.Component {
           Authorization: `Client-ID ${API_KEY}`
         }
       })
-    console.log(response.data.results)
+
+    this.setState({ images: response.data.results})
   }
 
   render() {
     return(
       <div className="ui container" style={{marginTop: '10px'}}>
         <SearchBar onSubmit={this.onSearchSubmit}/>
+        Found: {this.state.images.length} images
       </div>
     )
   }
